@@ -19,12 +19,12 @@ const EventList = () => {
     setType(evtType); 
   };
  
-  const filteredEvents = data?.events.filter((event) => {
+  const filteredEvents = data?.events?.filter((event) => {
     if (!type || event.type === type) { 
       return true;
     }
     return false;
-  }).slice((currentPage - 1) * PER_PAGE, currentPage * PER_PAGE);
+  })?.slice((currentPage - 1) * PER_PAGE, currentPage * PER_PAGE) || [];  
   const pageNumber = Math.floor((filteredEvents?.length || 0) / PER_PAGE) + 1;
   const typeList = new Set(data?.events.map((event) => event.type));
   return (

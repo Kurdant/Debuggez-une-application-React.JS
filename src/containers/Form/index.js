@@ -25,6 +25,7 @@ const Form = ({ onSuccess, onError, setIsOpened }) => {
     },
     [onSuccess, onError, setIsOpened]
   );
+  console.log("setIsOpened",setIsOpened)
   return (
     <form onSubmit={sendContact}>
       <div className="row">
@@ -58,12 +59,13 @@ const Form = ({ onSuccess, onError, setIsOpened }) => {
 Form.propTypes = {
   onError: PropTypes.func,
   onSuccess: PropTypes.func,
-  setIsOpened: PropTypes.func.isRequired, 
+  setIsOpened: PropTypes.func, 
 }
 
 Form.defaultProps = {
   onError: () => null,
   onSuccess: () => null,
+  setIsOpened: () => null,
 }
 
 export default Form;
