@@ -5,6 +5,7 @@ import "./style.scss";
 export const FIELD_TYPES = {
   INPUT_TEXT: 1,
   TEXTAREA: 2,
+  
 };
 
 const Field = ({ type = FIELD_TYPES.INPUT_TEXT, label, name, placeholder }) => {
@@ -13,6 +14,7 @@ const Field = ({ type = FIELD_TYPES.INPUT_TEXT, label, name, placeholder }) => {
     case FIELD_TYPES.INPUT_TEXT:
       component = (
         <input
+          required
           type="text"
           name={name}
           placeholder={placeholder}
@@ -21,11 +23,12 @@ const Field = ({ type = FIELD_TYPES.INPUT_TEXT, label, name, placeholder }) => {
       );
       break;
     case FIELD_TYPES.TEXTAREA:
-      component = <textarea name={name} data-testid="field-testid" />;
+      component = <textarea required name={name} data-testid="field-testid" />;
       break;
     default:
       component = (
         <input
+          required
           type="text"
           name={name}
           placeholder={placeholder}
