@@ -19,8 +19,10 @@ const Page = () => {
   const events = data && data.events ? data.events : [];
   console.log("Events:", events); 
 
-  const lastEvent = events.length > 0 ? events[events.length - 1] : null;
-  console.log("Last Event:", lastEvent); 
+  events.sort((a, b) => new Date(a.date) < new Date(b.date));
+
+  const lastEvent = events.length > 0 ? events[0] : null; 
+  console.log("Last Event:", lastEvent);
   return <>
     <header>
       <Menu />
@@ -124,16 +126,16 @@ const Page = () => {
     <div className="col presta">
           <h3>Notre dernière prestation</h3>
           {lastEvent ? (
-            <EventCard
-              imageSrc={lastEvent.cover}
-              title={lastEvent.title}
-              date={new Date(lastEvent.date)}
-              small
-              label="boom"
-            />
-          ) : (
-            <p>Aucune dernière prestation trouvée</p>
-          )}
+          <EventCard
+            imageSrc={lastEvent.cover}
+            title={lastEvent.title}
+            date={new Date(lastEvent.date)}
+            small
+            label="boom"
+          />
+        ) : (
+          <p>Aucune dernière prestation trouvée</p>
+        )}
         </div>
       <div className="col contact">
         <h3>Contactez-nous</h3>
